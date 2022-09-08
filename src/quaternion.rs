@@ -12,6 +12,12 @@ pub struct Quaternion<T> {
     k: T,
 }
 
+impl<T> Quaternion<T> {
+    pub fn with_wijk(w: T, i: T, j: T, k: T) -> Self {
+        Self { w, i, j, k }
+    }
+}
+
 #[cfg(feature = "num")]
 impl<T> Quaternion<T>
 where
