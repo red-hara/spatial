@@ -32,6 +32,77 @@ where
     }
 }
 
+impl<T> Quaternion<T> {
+    pub fn w_ref(&self) -> &T {
+        &self.w
+    }
+
+    pub fn i_ref(&self) -> &T {
+        &self.i
+    }
+
+    pub fn j_ref(&self) -> &T {
+        &self.j
+    }
+
+    pub fn k_ref(&self) -> &T {
+        &self.k
+    }
+
+    pub fn w_mut(&mut self) -> &mut T {
+        &mut self.w
+    }
+
+    pub fn i_mut(&mut self) -> &mut T {
+        &mut self.i
+    }
+
+    pub fn j_mut(&mut self) -> &mut T {
+        &mut self.j
+    }
+
+    pub fn k_mut(&mut self) -> &mut T {
+        &mut self.k
+    }
+
+    pub fn set_w(&mut self, w: T) {
+        self.w = w;
+    }
+
+    pub fn set_i(&mut self, i: T) {
+        self.i = i;
+    }
+
+    pub fn set_j(&mut self, j: T) {
+        self.j = j;
+    }
+
+    pub fn set_k(&mut self, k: T) {
+        self.k = k;
+    }
+}
+
+impl<T> Quaternion<T>
+where
+    T: Copy,
+{
+    pub fn w(&self) -> T {
+        self.w
+    }
+
+    pub fn i(&self) -> T {
+        self.i
+    }
+
+    pub fn j(&self) -> T {
+        self.j
+    }
+
+    pub fn k(&self) -> T {
+        self.k
+    }
+}
+
 #[cfg(feature = "num")]
 impl<T> Quaternion<T>
 where
