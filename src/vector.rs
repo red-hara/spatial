@@ -136,9 +136,11 @@ impl<T> Vector<T> {
         self / self.norm()
     }
 
-    pub fn cross(self, other: Self) -> Self
+    pub fn cross<U, R>(self, other: Vector<U>) -> Vector<R>
     where
-        T: Copy + Mul<Output = T> + Sub<Output = T>,
+        T: Copy + Mul<U, Output = R>,
+        U: Copy,
+        R: Sub<Output = R>,
     {
         Vector {
             x: self.y * other.z - self.z * other.y,
