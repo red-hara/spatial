@@ -134,6 +134,17 @@ where
         }
     }
 
+    pub fn into_angle_axis_checked(self) -> Option<(T, Vector<T>)> {
+        let half_angle = self.w.max(-T::one()).min(T::one()).acos();
+        if half_angle < T::epsilon() {
+            None
+        } else {
+            let sin = half_angle.sin();
+            let axis = Vector::new(self.i, self.j, self.k) / sin;
+            Some((half_angle * (T::one() + T::one()), axis))
+        }
+    }
+
     pub fn slerp(self, other: Self, progress: T) -> Self {
         let dot = self.dot(other);
         let (other, dot) = if dot < T::zero() {
