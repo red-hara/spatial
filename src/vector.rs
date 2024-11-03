@@ -153,7 +153,7 @@ impl<T> Vector<T> {
 #[cfg(feature = "num")]
 impl<T> Vector<T>
 where
-    T: Float + Div<Output = T>,
+    T: Float + Sqrt<Output = T> + Div<Output = T>,
 {
     pub fn normalized_checked(self) -> Option<Self> {
         let norm = self.norm();

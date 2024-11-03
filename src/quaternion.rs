@@ -1,3 +1,5 @@
+#[cfg(feature = "num")]
+use crate::ops::Sqrt;
 use crate::vector::Vector;
 use core::ops::{Add, Mul, Neg, Sub};
 #[cfg(feature = "num")]
@@ -106,7 +108,7 @@ where
 #[cfg(feature = "num")]
 impl<T> Quaternion<T>
 where
-    T: Float,
+    T: Float + Sqrt<Output = T>,
 {
     pub fn from_angle_axis(angle: T, axis: Vector<T>) -> Self {
         if let Some(normalized) = axis.normalized_checked() {
