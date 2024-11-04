@@ -23,6 +23,13 @@ impl<T> Vector<T> {
             z: mapper(self.z),
         }
     }
+
+    pub fn into<R>(self) -> Vector<R>
+    where
+        T: Into<R>,
+    {
+        self.map(Into::into)
+    }
 }
 
 #[cfg(feature = "num")]
