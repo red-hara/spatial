@@ -120,18 +120,19 @@ where
 }
 
 impl<T> Vector<T> {
-    pub fn norm<I>(self) -> T
+    pub fn norm<I, R>(self) -> R
     where
         T: Copy + Mul<Output = I>,
-        I: Sqrt<Output = T> + Add<Output = I>,
+        I: Sqrt<Output = R> + Add<Output = I>,
     {
         (self.x * self.x + self.y * self.y + self.z * self.z).sqrt()
     }
 
-    pub fn normalized_unchecked<I, R>(self) -> Vector<R>
+    pub fn normalized_unchecked<I, U, R>(self) -> Vector<R>
     where
-        T: Copy + Mul<Output = I> + Div<T, Output = R>,
-        I: Sqrt<Output = T> + Add<Output = I>,
+        T: Copy + Mul<Output = I> + Div<U, Output = R>,
+        I: Sqrt<Output = U> + Add<Output = I>,
+        U: Copy,
     {
         self / self.norm()
     }
